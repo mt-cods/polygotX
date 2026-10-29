@@ -1,0 +1,13 @@
+
+[python]
+marks = [80, 90, 85]
+average = sum(marks) / len(marks)
+export("average", average)
+print("Average:", average)
+[/python]
+
+[javascript]
+const avg = shared.average;
+const grade = avg >= 85 ? "A" : "B";
+console.log("Grade:", grade);
+[/javascript]

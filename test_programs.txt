@@ -1,0 +1,135 @@
+
+[python]
+name = "PolyglotX"
+export("project_name", name)
+print("Hello from Python!")
+[/python]
+
+[javascript]
+console.log("Hello from JavaScript!");
+console.log("Project:", shared.project_name);
+[/javascript]
+
+
+###################
+
+[python]
+numbers = [10, 20, 30, 40, 50]
+total = sum(numbers)
+average = total / len(numbers)
+
+export("total", total)
+export("average", average)
+
+print("Total:", total)
+print("Average:", average)
+[/python]
+
+[javascript]
+const total = shared.total;
+const average = shared.average;
+
+console.log("Received total:", total);
+console.log("Received average:", average);
+console.log("Double average:", average * 2);
+[/javascript]
+
+###################
+
+[python]
+export("price", 250)
+export("quantity", 4)
+print("Python: initial values exported")
+[/python]
+
+[javascript]
+shared.subtotal = shared.price * shared.quantity;
+shared.tax = shared.subtotal * 0.18;
+
+console.log("Subtotal:", shared.subtotal);
+console.log("Tax:", shared.tax);
+[/javascript]
+
+[python]
+final_amount = shared["subtotal"] + shared["tax"]
+export("final_amount", final_amount)
+print("Final amount:", final_amount)
+[/python]
+
+#################
+
+[python]
+marks = [88, 92, 76, 95]
+average = sum(marks) / len(marks)
+
+export("average", average)
+print("Average marks:", average)
+[/python]
+
+[javascript]
+const average = shared.average;
+let result;
+
+if (average >= 90) {
+    result = "Excellent";
+} else if (average >= 75) {
+    result = "Good";
+} else {
+    result = "Needs improvement";
+}
+
+console.log("Result:", result);
+shared.result = result;
+[/javascript]
+
+[python]
+print("Final evaluation:", shared["result"])
+[/python]
+
+
+##########################
+
+[python]
+export("a", 12)
+print("Block 1 complete")
+[/python]
+
+[javascript]
+shared.b = shared.a * 3;
+console.log("b =", shared.b);
+[/javascript]
+
+[python]
+export("c", shared["b"] + 8)
+print("c =", shared["c"])
+[/python]
+
+[javascript]
+console.log("Final result:", shared.c);
+[/javascript]
+
+#####################
+
+[python]
+print("Starting program")
+[/python]
+
+[javascript]
+console.log(shared.salary);
+[/javascript]
+
+#######################
+
+[python]
+export("score", 70)
+print("Original score:", 70)
+[/python]
+
+[javascript]
+shared.score = 95;
+console.log("Updated score:", shared.score);
+[/javascript]
+
+[python]
+print("Final score:", shared["score"])
+[/python]
